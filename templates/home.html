@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <h1>Welcome to my website</h1>
+    <h1>Books:</h1>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+            {% for book in books %}
+                <div class="col">
+                    <div class="card h-100">
+                        <img src="{{ book.image.url }}" class="card-img-top" alt="..." width="250px" height="250px">
+                        <div class="card-body">
+                            <a href="{% url 'book-detail' book.slug %}">
+                                <h5 class="card-title">{{ book.title }}</h5>
+                            </a>
+<!--                            <p class="card-text">{{ book.description }}</p>-->
+                        </div>
+<!--                        <div class="card-footer">-->
+<!--                            <small class="text-body-secondary">{{ book.author.get_full_name }}</small>-->
+<!--                        </div>-->
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    <h1>Users:</h1>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+            {% for user in users %}
+                <div class="col">
+                    <div class="card h-100">
+                        <img src="{{ book.image.url }}" class="card-img-top" alt="..." width="250px" height="250px">
+                        <div class="card-body">
+                            <a href="{% url 'book-detail' user.id %}">
+                                <h5 class="card-title">{{ user.get_full_name }}</h5>
+                            </a>
+
+                        </div>
+
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+{% endbock %}
